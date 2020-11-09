@@ -1,0 +1,37 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#gridParent {
+    display: grid;
+    position: fixed;
+    width: 30%;
+    height: 45%;
+}
+
+.gridChildren {
+    border:  1px dotted grey;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+header {
+    background-color: pink;
+    margin-bottom: 2rem;
+}
+
+#reset {
+    display: flex;
+    justify-content: center;
+}
