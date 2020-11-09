@@ -1,5 +1,8 @@
 const gridParent = document.querySelector("#gridParent");
 const reset = document.getElementById("reset");
+const mono = document.getElementById("mono");
+const greyScale = document.getElementById("greyScale");
+const rainbow = document.getElementById("rainbow");
 
 function createGrid(n, r) {
     gridParent.style.cssText = `grid-template-rows: repeat(${n}, minmax(0, ${100 / n}%)); 
@@ -42,14 +45,9 @@ function fiftyShadesOfGrey(e) {
 
 window.onload = createGrid(16);
 
-
-function greyScale(e) {
-    e.addEventListener("mouseover", fiftyShadesOfGrey(e));
-};
-
 const divs = document.querySelectorAll("div");
 divs.forEach((div) => {
-    greyScale(div);
+    fiftyShadesOfGrey(div);
 });
 
 function resetGrid(e) {
@@ -65,8 +63,33 @@ function resetGrid(e) {
         createGrid(gridSize);
         const divs = document.querySelectorAll("div");
         divs.forEach((div) => {
-            greyScale(div);
+            fiftyShadesOfGrey(div);
 });
     });
 };
 reset.addEventListener("click", resetGrid());
+
+function colorRainbow(e) {
+    e.addEventListener("mouseover", () => {
+    string = e.style.backgroundColor.toString();
+    if (!(string.includes("rgb"))) return;
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    console.log(r, g, b);
+    // let newColor = `rgb(${r},${g},${b})`;
+    e.style.backgroundColor = `rgb(${r},${g},${b})`;
+    });
+}
+
+function colorMono(e) {
+    e.addEventListener("mouseover", () => {
+        string = e.style.backgroundColor.toString();
+        if (!(string.includes("rgb"))) return;
+        e.style.backgroundColor = "rgba(10,11,11, 0.5)";
+        
+
+});
+};
+
+mono.addEventListener("click", colorMono());

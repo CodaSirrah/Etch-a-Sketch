@@ -5,16 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etch-a-Sketch</title>
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            <h1>Etch-a-Sketch</h1>
-            <h2>Use the sketchpad below to start drawing!</h2>
+            <h1 class="font">Etch-a-Sketch</h1>
+            <h2 class="font">Use the sketchpad below to start drawing!</h2>
         </header>
-        <button id="reset">Reset</button>
-        <div id="wrapper">
-            <div id="gridParent"></div>
-        </div>
+            <div id="buttonContainer">
+                <button id="greyScale" class="font">GreyScale</button>
+                <button id="mono" class="font">Mono</button>
+                <button id="rainbow" class="font">Rainbow</button>
+                <button id="reset" class="font">Reset</button>
+            </div>
+                <div id="wrapper">
+                    <div id="gridParent"></div>
+                </div>  
         <script src="game.js"></script>
     </body>
 </html>

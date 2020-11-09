@@ -2,8 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: auto;
+    height: 100%;
 }
 
+body {
+    background-color: rgba(239,154,158, 0.2);
+    z-index: -1;
+}
 
 #wrapper {
     display: flex;
@@ -15,15 +20,21 @@ html, body {
     position: fixed;
     width: 30%;
     height: 45%;
+    background-color: rgb(255, 255, 255);
 }
 
 .gridChildren {
-    border:  1px dotted grey;
+    border: 1px dotted rgba(30, 50, 70, 0.5);
 }
 
 h1, h2 {
     text-align: center;
     margin-top: 0;
+
+}
+h2 {
+    background-color: white;
+    font-size: 1.5rem;
 }
 
 header {
@@ -34,4 +45,23 @@ header {
 #reset {
     display: flex;
     justify-content: center;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+button {
+    padding: 3px;
+    margin: 0 3px;
+    border-radius: 20%;
+    border-color: rgb(167, 113, 228);
+    background-color: white;
+    font-size: 1.3rem;
+}
+
+.font {
+    font-family: 'Big Shoulders Stencil Text', cursive;
 }
