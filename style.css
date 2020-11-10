@@ -65,3 +65,24 @@ button {
 .font {
     font-family: 'Big Shoulders Stencil Text', cursive;
 }
+
+.selected {
+    background-color: #7D7FD8;
+    color: white;
+    outline: auto;
+}
+
+.resetSelected:active {
+    background-color: #7D7FD8;
+    color: white;
+    outline: auto;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+p {
+    padding-left: 5px;
+}
