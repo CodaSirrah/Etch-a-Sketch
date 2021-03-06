@@ -4,9 +4,9 @@ const mono = document.getElementById("mono");
 const greyScale = document.getElementById("greyScale");
 const rainbow = document.getElementById("rainbow");
 
-let monoSwitch = "off";
-let greyScaleSwitch = "on";
-let rainbowSwitch = "off";
+let monoSwitch = false;
+let greyScaleSwitch = true;
+let rainbowSwitch = false;
 
 
 function createGrid(n, r) {
@@ -27,8 +27,8 @@ function repeatCells(n) {
 };
 
 function fiftyShadesOfGrey(e) {
-    if (greyScaleSwitch ==="off") return;
-    else if (greyScaleSwitch === "on") {
+    if (greyScaleSwitch === false) return;
+    else if (greyScaleSwitch === true) {
         e.addEventListener("mouseover", () => {
         let string;
         string = e.style.backgroundColor;
@@ -68,8 +68,8 @@ function resetGrid(e) {
 reset.addEventListener("click", resetGrid());
 
 function colorRainbow(e) {
-    if (rainbowSwitch === "off") return;
-    else if (rainbowSwitch === "on") {
+    if (rainbowSwitch === false) return;
+    else if (rainbowSwitch === true) {
         e.addEventListener("mouseover", () => {
             string = e.style.backgroundColor;
             if (!(string.includes("rgb"))) return;
@@ -81,8 +81,8 @@ function colorRainbow(e) {
     };
 };
 function colorMono(e) {
-    if (monoSwitch === "off") return;
-    else if (monoSwitch === "on") {
+    if (monoSwitch === false) return;
+    else if (monoSwitch === true) {
         e.addEventListener("mouseover", () => {
             string = e.style.backgroundColor;
             if (!(string.includes("rgb"))) return;
@@ -91,12 +91,12 @@ function colorMono(e) {
     };
 };
 greyScale.addEventListener("click", () => {
-    if (greyScaleSwitch === "off") {
-    greyScaleSwitch = "on";
+    if (greyScaleSwitch === false) {
+    greyScaleSwitch = true;
     console.log(`greyScaleSwitch: ${greyScaleSwitch}`);
-    monoSwitch = "off";
+    monoSwitch = false;
     console.log(`monoSwitch: ${monoSwitch}`);
-    rainbowSwitch = "off";
+    rainbowSwitch = false;
     console.log(`rainbowSwitch: ${rainbowSwitch}`);
     mono.classList.remove("selected");
     rainbow.classList.remove("selected");
@@ -106,12 +106,12 @@ greyScale.addEventListener("click", () => {
 });
 
 mono.addEventListener("click", () => {
-    if (monoSwitch === "off") {
-    monoSwitch = "on";
+    if (monoSwitch === false) {
+    monoSwitch = true;
     console.log(`monoSwitch: ${monoSwitch}`);
-    greyScaleSwitch = "off"
+    greyScaleSwitch = false
     console.log(`greyScaleSwitch: ${greyScaleSwitch}`);
-    rainbowSwitch = "off";
+    rainbowSwitch = false;
     console.log(`rainbowSwitch: ${rainbowSwitch}`);
     greyScale.classList.remove("selected");
     rainbow.classList.remove("selected");
@@ -121,12 +121,12 @@ mono.addEventListener("click", () => {
 });
 
 rainbow.addEventListener("click", () => {
-    if (rainbowSwitch === "off") {
-        rainbowSwitch = "on";
+    if (rainbowSwitch === false) {
+        rainbowSwitch = true;
         console.log(`rainbowSwitch: ${rainbowSwitch}`);
-        greyScaleSwitch = "off";
+        greyScaleSwitch = false;
         console.log(`greyScaleSwitch: ${greyScaleSwitch}`);
-        monoSwitch = "off";
+        monoSwitch = false;
         console.log(`monoSwitch: ${monoSwitch}`);
         greyScale.classList.remove("selected");
         mono.classList.remove("selected");
@@ -138,11 +138,11 @@ rainbow.addEventListener("click", () => {
 function startDraw() {
 const divs = document.querySelectorAll("div");
 divs.forEach((div)  => {
-    if (greyScaleSwitch === "on") {
+    if (greyScaleSwitch === true) {
         fiftyShadesOfGrey(div);
-    } else if (monoSwitch === "on") {
+    } else if (monoSwitch === true) {
         colorMono(div);
-    } else if (rainbowSwitch === "on") {
+    } else if (rainbowSwitch === true) {
         colorRainbow(div);
     }
 });
