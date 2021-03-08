@@ -5,7 +5,7 @@ const greyScale = document.getElementById("greyScale");
 const rainbow = document.getElementById("rainbow");
 
 let monoSwitch = false;
-let greyScaleSwitch = true;
+let greyScaleSwitch = false;
 let rainbowSwitch = false;
 
 
@@ -27,27 +27,29 @@ function repeatCells(n) {
 };
 
 function fiftyShadesOfGrey(e) {
+    
+    
+    e.addEventListener("mouseover", () => {
+    let string;
     if (greyScaleSwitch === false) return;
-    else if (greyScaleSwitch === true) {
-        e.addEventListener("mouseover", () => {
-        let string;
+    string = e.style.backgroundColor;
+    if (!(string.includes("rgb"))) return;
+    let decNum = string.slice("17", "20");
+    let numCheck = string.slice("0, 20");
+    console.log(numCheck);
+    console.log(decNum);
+    decNum = parseFloat(decNum);
+    if (decNum >= 0.9) return;
+    decNum += 0.1;  
+    e.style.backgroundColor = `rgba(10,11,11, ${decNum})`;
+                
+    if (!(string.includes("a"))) {
+        string = "rgba(10,11,11, 0.1";
+        e.style.background = string;
         string = e.style.backgroundColor;
-        
-        if (!(string.includes("rgb"))) return;
+        } 
 
-            let decNum = string.slice("17", "20");
-            decNum = parseFloat(decNum);
-            decNum += 0.1;
-            e.style.backgroundColor = `rgba(10,11,11, ${decNum})`;
-            string = e.style.backgroundColor;
-        if (!(string.includes("a"))) {
-            string = "rgba(10,11,11, 0.1";
-            e.style.background = string;
-            string = e.style.backgroundColor;
-            } 
-
-        });
-    };
+    });
 };
 window.onload = createGrid(16);
 
@@ -68,27 +70,23 @@ function resetGrid(e) {
 reset.addEventListener("click", resetGrid());
 
 function colorRainbow(e) {
-    if (rainbowSwitch === false) return;
-    else if (rainbowSwitch === true) {
-        e.addEventListener("mouseover", () => {
-            string = e.style.backgroundColor;
-            if (!(string.includes("rgb"))) return;
-            let r = Math.floor(Math.random() * 255);
-            let g = Math.floor(Math.random() * 255);
-            let b = Math.floor(Math.random() * 255);
-            e.style.backgroundColor = `rgb(${r},${g},${b})`;
-        });
-    };
+    e.addEventListener("mouseover", () => {
+        if (rainbowSwitch === false) return;
+        string = e.style.backgroundColor;   
+        if (!(string.includes("rgb"))) return;
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+        e.style.backgroundColor = `rgb(${r},${g},${b})`;
+    });
 };
 function colorMono(e) {
-    if (monoSwitch === false) return;
-    else if (monoSwitch === true) {
-        e.addEventListener("mouseover", () => {
-            string = e.style.backgroundColor;
-            if (!(string.includes("rgb"))) return;
-            e.style.backgroundColor = "rgb(129,144,148)";
-        });
-    };
+    e.addEventListener("mouseover", () => {
+        if (monoSwitch === false) return;
+        string = e.style.backgroundColor;
+        if (!(string.includes("rgb"))) return;
+        e.style.backgroundColor = "rgb(129,144,148)";
+    });
 };
 greyScale.addEventListener("click", () => {
     if (greyScaleSwitch === false) {
